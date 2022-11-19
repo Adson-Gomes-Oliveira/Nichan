@@ -4,7 +4,8 @@
   "description": "Backend for Nichan app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register src/tests/unit/**/*.test.ts --exit -t 60000",
+    "dev": "tsnd src/server.ts"
   },
   "author": "",
   "license": "ISC",
