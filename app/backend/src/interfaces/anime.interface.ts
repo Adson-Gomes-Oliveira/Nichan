@@ -5,8 +5,7 @@ const animeZodSchema = z.object({
   title: z.string(),
   description: z.string(),
   thumbnail: z.string(),
-  genres: z.string().array(),
+  gender: z.string(),
+  comments: z.string().array(),
   episodes: z.array(episodeZodSchema).optional(),
 });
-
-export default animeZodSchema;
