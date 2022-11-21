@@ -1,8 +1,8 @@
-import { Model, isValidObjectId, UpdateQuery } from 'mongoose';
+import { Model, isObjectIdOrHexString, UpdateQuery } from 'mongoose';
 import IModel from '../interfaces/model.interface';
 import HttpStatus from '../helpers/HttpStatus';
 
-const INVALID_ID_ERROR = 'Id must have 24 valid hexadecimal characters';
+export const INVALID_ID_ERROR = 'Id must have 24 valid hexadecimal characters';
 
 abstract class MongoModel<T> implements IModel<T> {
   constructor(protected _model: Model<T>) {}
@@ -16,20 +16,22 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async readOne(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) {
+    if (!isObjectIdOrHexString(_id)) {
       const err = new Error(INVALID_ID_ERROR);
       err.name = 'INVALID_ID';
       err.stack = HttpStatus.BAD_REQUEST.toString();
+      throw err;
     }
 
     return this._model.findOne({ _id });
   }
 
   public async update(_id: string, payload: T): Promise<T | null> {
-    if (!isValidObjectId(_id)) {
+    if (!isObjectIdOrHexString(_id)) {
       const err = new Error(INVALID_ID_ERROR);
       err.name = 'INVALID_ID';
       err.stack = HttpStatus.BAD_REQUEST.toString();
+      throw err;
     }
 
     return this._model.findByIdAndUpdate(
@@ -40,10 +42,11 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async delete(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) {
+    if (!isObjectIdOrHexString(_id)) {
       const err = new Error(INVALID_ID_ERROR);
       err.name = 'INVALID_ID';
       err.stack = HttpStatus.BAD_REQUEST.toString();
+      throw err;
     }
 
     return this._model.findByIdAndDelete({ _id });

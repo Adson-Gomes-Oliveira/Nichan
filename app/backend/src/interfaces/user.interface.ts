@@ -4,6 +4,7 @@ import userAnimeZodSchema from './userAnimes.interface';
 const userZodSchema = z.object({
   nickName: z.string().min(3).max(16),
   fullName: z.string().min(3),
+  birthDate: z.date(),
   email: z.string().regex(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i),
   password: z.string().min(8),
   gender: z.enum(['male', 'female', 'transgender', 'non-binary']),

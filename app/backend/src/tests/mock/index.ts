@@ -1,35 +1,27 @@
-export const USER_INSTANCE_MOCK = {
+import { IUser } from './../../interfaces/user.interface';
+
+export const WRONG_ID_MOCK = '6073-7bde-2e93-9791ceda1fe5';
+
+export const USER_INSTANCE_MOCK: IUser = {
   nickName: 'LordCroftTR',
   fullName: 'Adson Gomes Oliveira',
-  birthDate: '2000/10/10',
+  birthDate: new Date(),
   email: 'adsongoliveira2022@outlook.com',
   password: '454ds5dfv131fvdfsd5fd5s2',
-  gender: 'male',
-  animesList: [],
+  gender: 'female',
+  user_animes_list: [],
 };
 
 export const USER_INSTANCE_MOCK_WITH_ID = {
-  _id: 'lo54267c-6073-7bde-2e93-9791ceda1fe5',
+  _id: '62261a65d66c6be0a63c051f',
   nickName: 'LordCroftTR',
   fullName: 'Adson Gomes Oliveira',
   birthDate: '2000/10/10',
   email: 'adsongoliveira2022@outlook.com',
   password: '454ds5dfv131fvdfsd5fd5s2',
   gender: 'male',
-  animesList: [
-    {
-      _id: 'ce09757c-6073-7bde-2e93-9791ceda1fe5',
-      title: 'The Overlord',
-      description: 'A player of MMORPG goes into a game, and now lives among their own characters',
-      thumbnail: 'img.co/imagemocked255.jpg',
-      episodes: [
-        {
-          _id: 'mj01157c-9973-7bde-2e93-9791ceda1fe5',
-          number: 1,
-          watched: false,
-          duration: '00:23:15',
-        },
-      ],
-    },
+  user_animes_list: [
+    'lo54267c-6073-7bde-2e93-9791ceda1fe5',
+    'bu54267c-6577-7bde-2e93-9791ceda1fe5'
   ],
 };

@@ -5,6 +5,7 @@ import MongoModel from './mongo.model';
 const userMongooseSchema = new Schema<IUser>({
   nickName: String,
   fullName: String,
+  birthDate: Date,
   email: String,
   password: String,
   gender: String,
