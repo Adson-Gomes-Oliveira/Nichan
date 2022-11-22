@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/25</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/25</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -137,37 +137,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -204,11 +204,11 @@ abstract class MongoModel&lt;T&gt; implements IModel&lt;T&gt; {
   }
 &nbsp;
   public async update(_id: string, payload: T): Promise&lt;T | null&gt; {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!isObjectIdOrHexString(_id)) {
-      const err = <span class="cstat-no" title="statement not covered" >new Error(INVALID_ID_ERROR);</span>
-<span class="cstat-no" title="statement not covered" >      err.name = 'INVALID_ID';</span>
-<span class="cstat-no" title="statement not covered" >      err.stack = HttpStatus.BAD_REQUEST.toString();</span>
-<span class="cstat-no" title="statement not covered" >      throw err;</span>
+    if (!isObjectIdOrHexString(_id)) {
+      const err = new Error(INVALID_ID_ERROR);
+      err.name = 'INVALID_ID';
+      err.stack = HttpStatus.BAD_REQUEST.toString();
+      throw err;
     }
 &nbsp;
     return this._model.findByIdAndUpdate(
@@ -219,11 +219,11 @@ abstract class MongoModel&lt;T&gt; implements IModel&lt;T&gt; {
   }
 &nbsp;
   public async delete(_id: string): Promise&lt;T | null&gt; {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!isObjectIdOrHexString(_id)) {
-      const err = <span class="cstat-no" title="statement not covered" >new Error(INVALID_ID_ERROR);</span>
-<span class="cstat-no" title="statement not covered" >      err.name = 'INVALID_ID';</span>
-<span class="cstat-no" title="statement not covered" >      err.stack = HttpStatus.BAD_REQUEST.toString();</span>
-<span class="cstat-no" title="statement not covered" >      throw err;</span>
+    if (!isObjectIdOrHexString(_id)) {
+      const err = new Error(INVALID_ID_ERROR);
+      err.name = 'INVALID_ID';
+      err.stack = HttpStatus.BAD_REQUEST.toString();
+      throw err;
     }
 &nbsp;
     return this._model.findByIdAndDelete({ _id });
@@ -238,7 +238,7 @@ export default MongoModel;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-21T00:33:08.335Z
+                at 2022-11-22T18:21:57.639Z
             </div>
         <script src="prettify.js"></script>
         <script>

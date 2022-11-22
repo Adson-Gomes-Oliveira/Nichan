@@ -55,7 +55,7 @@ describe('[ 01 ] Unit tests for: Users Model', () => {
     let errorToTest = null;
 
     try {
-      await newUsersModel.readOne(WRONG_ID_MOCK);
+      await newUsersModel.update(WRONG_ID_MOCK, USER_INSTANCE_MOCK);
     } catch (error: any) {
       errorToTest = error;
     }
@@ -71,7 +71,7 @@ describe('[ 01 ] Unit tests for: Users Model', () => {
     let errorToTest = null;
 
     try {
-      await newUsersModel.readOne(WRONG_ID_MOCK);
+      await newUsersModel.delete(WRONG_ID_MOCK);
     } catch (error: any) {
       errorToTest = error;
     }
