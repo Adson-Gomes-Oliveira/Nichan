@@ -23,18 +23,25 @@ describe('[ 01 ] Unit tests for: Users Model', () => {
     sinon.stub(Model, 'findByIdAndDelete').resolves(USER_INSTANCE_MOCK_WITH_ID);
   });
 
+  after(() => {
+    sinon.restore();
+  });
+
   it('Create is possible with mongoose', async () => {
     const request = await newUsersModel.create(USER_INSTANCE_MOCK);
     expect(request).to.be.deep.equal(USER_INSTANCE_MOCK_WITH_ID);
   });
+
   it('Get all is possible with mongoose', async () => {
     const request = await newUsersModel.read();
     expect(request).to.be.deep.equal([USER_INSTANCE_MOCK_WITH_ID]);
   });
+
   it('Get One is possible with mongoose', async () => {
     const request = await newUsersModel.readOne(USER_INSTANCE_MOCK_WITH_ID._id);
     expect(request).to.be.deep.equal(USER_INSTANCE_MOCK_WITH_ID);
   });
+
   it('Get One is impossible with mongoose when the id is invalid', async () => {
     let errorToTest = null;
 
@@ -47,10 +54,12 @@ describe('[ 01 ] Unit tests for: Users Model', () => {
     expect(errorToTest.message).to.be.equal(ErrorMessages.INVALID_ID_ERROR);
     expect(Number(errorToTest.stack)).to.be.equal(HttpStatus.BAD_REQUEST);
   });
+
   it('Update is possible with mongoose', async () => {
     const request = await newUsersModel.update(USER_INSTANCE_MOCK_WITH_ID._id, USER_INSTANCE_MOCK);
     expect(request).to.be.deep.equal(USER_INSTANCE_MOCK_WITH_ID);
   });
+
   it('Update is impossible with mongoose when the id is invalid', async () => {
     let errorToTest = null;
 
@@ -63,10 +72,12 @@ describe('[ 01 ] Unit tests for: Users Model', () => {
     expect(errorToTest.message).to.be.equal(ErrorMessages.INVALID_ID_ERROR);
     expect(Number(errorToTest.stack)).to.be.equal(HttpStatus.BAD_REQUEST);
   });
+
   it('Delete is possible with mongoose', async () => {
     const request = await newUsersModel.delete(USER_INSTANCE_MOCK_WITH_ID._id);
     expect(request).to.be.deep.equal(USER_INSTANCE_MOCK_WITH_ID);
   });
+
   it('Delete is impossible with mongoose when the id is invalid', async () => {
     let errorToTest = null;
 
