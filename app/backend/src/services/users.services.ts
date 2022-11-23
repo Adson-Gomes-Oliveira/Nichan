@@ -3,6 +3,7 @@ import IServices from "../interfaces/services.interface";
 import IModel from '../interfaces/model.interface';
 import ErrorMessages from '../helpers/ErrorMessages';
 import HttpStatus from '../helpers/HttpStatus';
+import bcrypt from 'bcrypt';
 
 class UsersServices implements IServices<IUser> {
   constructor(private _model: IModel<IUser>) {};
@@ -15,6 +16,9 @@ class UsersServices implements IServices<IUser> {
       err.stack = HttpStatus.BAD_REQUEST.toString();
       throw err;
     }
+
+    const encryptedPassword = await bcrypt.hash(payload.password, 10);
+    payload.password = encryptedPassword;
 
     const request = await this._model.create(payload);
     return request;
