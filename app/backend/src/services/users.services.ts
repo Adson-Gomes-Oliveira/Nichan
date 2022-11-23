@@ -61,6 +61,7 @@ class UsersServices implements IServices<IUser> {
 
     return request;
   };
+
   public async delete(_id: string): Promise<IUser | null> {
     const request = await this._model.delete(_id);
 
