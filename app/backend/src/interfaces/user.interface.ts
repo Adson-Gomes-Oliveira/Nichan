@@ -3,7 +3,7 @@ import { z } from 'zod';
 const userZodSchema = z.object({
   nickName: z.string().min(3).max(16),
   fullName: z.string().min(3),
-  birthDate: z.date(),
+  birthDate: z.string(),
   email: z.string(),
   password: z.string().min(8),
   gender: z.enum(['male', 'female', 'transgender', 'non-binary']),

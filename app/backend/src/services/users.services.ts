@@ -30,7 +30,8 @@ class UsersServices implements IServices<IUser> {
   };
 
   public async findOne(_id: string): Promise<IUser | null> {
-    const request = this._model.readOne(_id);
+    const request = await this._model.readOne(_id);
+
     if (!request) {
       const err = new Error('');
       err.name = ErrorMessages.OBJECT_NOT_EXIST;

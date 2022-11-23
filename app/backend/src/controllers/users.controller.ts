@@ -4,7 +4,13 @@ import UsersServices from '../services/users.services';
 import HttpStatus from '../helpers/HttpStatus';
 
 class UsersController {
-  constructor(private _services: UsersServices) {};
+  constructor(private _services: UsersServices) {
+    this.create = this.create.bind(this);
+    this.findAll = this.findAll.bind(this);
+    this.findOne = this.findOne.bind(this);
+    this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
+  };
 
   public async create(req: Request, res: Response): Promise<Response> {
     const payload = req.body as IUser

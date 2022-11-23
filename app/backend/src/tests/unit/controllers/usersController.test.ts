@@ -15,11 +15,13 @@ import HttpStatus from '../../../helpers/HttpStatus';
 
 const { expect } = chai;
 
-describe('[ 02 ] Unit tests for: Users Services', () => {
+describe('[ 03 ] Unit tests for: Users Controller', () => {
   const newUserModel = new UsersModel();
   const newUserServices = new UsersServices(newUserModel);
   const newUserController = new UsersController(newUserServices);
-  const req = {} as Request;
+  const req = {
+    params: {},
+  } as Request;
   const res = {} as Response;
 
   before(() => {
