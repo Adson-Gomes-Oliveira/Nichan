@@ -11,8 +11,8 @@ const UserC = new UsersController(UserS);
 
 router.get('/', UserC.findAll);
 router.get('/:id', UserC.findOne);
-router.post('/', UserC.create);
-router.put('/:id', UserC.update);
-router.delete('/:id', UserC.delete);
+router.post('/register', UserC.create);
+router.put('/edit/:id', UserC.update);
+router.delete('/delete/:id', UserC.delete);
 
 export default router;
