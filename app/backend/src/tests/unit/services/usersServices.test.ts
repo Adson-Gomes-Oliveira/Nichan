@@ -14,7 +14,7 @@ import HttpStatus from '../../../helpers/HttpStatus';
 
 const { expect } = chai;
 
-describe('[ 02 ] Unit tests for: Users Services', () => {
+describe('[ 03 ] Unit tests for: Users Services', () => {
   const newMongoModel = new UsersModel();
   const newUserServices = new UsersServices(newMongoModel);
 

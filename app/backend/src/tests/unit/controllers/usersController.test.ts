@@ -15,7 +15,7 @@ import HttpStatus from '../../../helpers/HttpStatus';
 
 const { expect } = chai;
 
-describe('[ 03 ] Unit tests for: Users Controller', () => {
+describe('[ 05 ] Unit tests for: Users Controller', () => {
   const newUserModel = new UsersModel();
   const newUserServices = new UsersServices(newUserModel);
   const newUserController = new UsersController(newUserServices);
