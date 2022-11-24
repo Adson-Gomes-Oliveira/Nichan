@@ -8,4 +8,5 @@ const commentZodSchema = z.object({
   rating: z.number().min(1).max(5).optional(),
 });
 
+export type IComment = z.infer<typeof commentZodSchema>;
 export default commentZodSchema;
