@@ -5,12 +5,12 @@ import MongoModel from './mongo.model';
 const userAnimesMongooseSchema = new Schema<IUserAnime>({
   anime_id: String,
   episodes: Array,
-  watched_eps: Number,
+  watched_eps: Array,
   favorite: Boolean,
   watching: Boolean,
   rating: Number,
-  started: String,
-  finished: String,
+  started_at: String,
+  finished_at: String,
 }, { versionKey: false });
 
 class UserAnimesModel extends MongoModel<IUserAnime> {
