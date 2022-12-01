@@ -21,7 +21,7 @@ class CommentsServices implements IServices<IComment> {
   };
 
   public async findAll(): Promise<IComment[]> {
-    const request = await this._model.read();
+    const request = await this._model.read({});
     return request;
   };
 

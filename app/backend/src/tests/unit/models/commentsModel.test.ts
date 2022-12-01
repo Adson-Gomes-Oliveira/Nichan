@@ -33,7 +33,7 @@ describe('[ 07 ] Unit tests for: Comments Model', () => {
   });
 
   it('Get all is possible with mongoose', async () => {
-    const request = await newCommentsModel.read();
+    const request = await newCommentsModel.read({});
     expect(request).to.be.deep.equal([COMMENT_INSTANCE_MOCK_WITH_ID]);
   });
 

@@ -1,4 +1,4 @@
-import { Model, isObjectIdOrHexString, UpdateQuery } from 'mongoose';
+import { Model, isObjectIdOrHexString, UpdateQuery, QueryOptions } from 'mongoose';
 import IModel from '../interfaces/model.interface';
 import HttpStatus from '../helpers/HttpStatus';
 import ErrorMessages from '../helpers/ErrorMessages';
@@ -10,8 +10,8 @@ abstract class MongoModel<T> implements IModel<T> {
     return this._model.create({ ...payload });
   }
 
-  public async read(): Promise<T[]> {
-    return this._model.find();
+  public async read(query: QueryOptions): Promise<T[]> {
+    return this._model.find(query);
   }
 
   public async readOne(_id: string): Promise<T | null> {

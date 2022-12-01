@@ -25,7 +25,7 @@ class UsersServices implements IServices<IUser> {
   };
 
   public async findAll(): Promise<IUser[]> {
-    const request = await this._model.read();
+    const request = await this._model.read({});
     return request;
   };
 

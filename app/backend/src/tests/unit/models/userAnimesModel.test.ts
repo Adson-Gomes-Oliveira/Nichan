@@ -33,7 +33,7 @@ describe('[ 02 ] Unit tests for: Users Animes Model', () => {
   });
 
   it('Get all is possible with mongoose', async () => {
-    const request = await newUserAnimesModel.read();
+    const request = await newUserAnimesModel.read({});
     expect(request).to.be.deep.equal([USER_ANIMES_INSTANCE_MOCK_WITH_ID]);
   });
 

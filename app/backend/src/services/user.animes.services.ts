@@ -21,7 +21,7 @@ class UserAnimesServices implements IServices<IUserAnime> {
   };
 
   public async findAll(): Promise<IUserAnime[]> {
-    const request = await this._model.read();
+    const request = await this._model.read({});
     return request;
   };
 
