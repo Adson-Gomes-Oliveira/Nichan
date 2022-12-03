@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+require("express-async-errors");
+const cors_1 = __importDefault(require("cors"));
+const helmet_1 = __importDefault(require("helmet"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
+const user_animes_routes_1 = __importDefault(require("./routes/user.animes.routes"));
+const comments_routes_1 = __importDefault(require("./routes/comments.routes"));
+const login_routes_1 = __importDefault(require("./routes/login.routes"));
+const error_middleware_1 = __importDefault(require("./middlewares/error.middleware"));
+const auth_middleware_1 = __importDefault(require("./middlewares/auth.middleware"));
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
+app.use((0, helmet_1.default)());
+app.use('/login', login_routes_1.default);
+app.use('/users', users_routes_1.default);
+app.use(auth_middleware_1.default.verifyToken);
+app.use('/animes', user_animes_routes_1.default);
+app.use('/comments', comments_routes_1.default);
+app.use(error_middleware_1.default);
+app.use((req, res) => res.send('OK'));
+exports.default = app;

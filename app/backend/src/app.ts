@@ -14,12 +14,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
+app.use('/health-check', (req, res) => res.send('OK'));
 app.use('/login', LoginRoute);
 app.use('/users', UsersRoute);
 app.use(AuthMiddleware.verifyToken);
 app.use('/animes', UserAnimesRoute);
 app.use('/comments', CommentsRoute);
 app.use(errorMiddleware);
-app.use((req, res) => res.send('OK'));
 
 export default app;
