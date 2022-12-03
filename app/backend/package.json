@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "backend-nichan",
   "version": "1.0.0",
   "description": "Backend for Nichan app",
   "main": "src/server.ts",
