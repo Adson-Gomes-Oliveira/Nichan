@@ -1,14 +1,14 @@
 import * as sinon from 'sinon';
 import chai from 'chai';
-import UserAnimesModel from '../../../models/users.animes.model';
+import UserAnimesModel from '../../../models/animes.model';
 import ErrorMessages from '../../../helpers/ErrorMessages';
-import UserAnimesServices from '../../../services/user.animes.services';
+import UserAnimesServices from '../../../services/animes.services';
 import {
   USER_ANIMES_INSTANCE_MOCK,
   WRONG_USER_ANIMES_INSTANCE,
   USER_ANIMES_INSTANCE_MOCK_WITH_ID
 } from '../../mock';
-import { IUserAnime } from '../../../interfaces/user.animes.interface';
+import { IAnime } from '../../../interfaces/anime.interface';
 import HttpStatus from '../../../helpers/HttpStatus';
 
 const { expect } = chai;
@@ -38,7 +38,7 @@ describe('[ 04 ] Unit tests for: Users Animes Services', () => {
     let errorToTest;
 
     try {
-      await newUserAnimesServices.create(WRONG_USER_ANIMES_INSTANCE as IUserAnime);
+      await newUserAnimesServices.create(WRONG_USER_ANIMES_INSTANCE as unknown as IAnime);
     } catch (error: any) {
       errorToTest = error;
     }
@@ -66,7 +66,7 @@ describe('[ 04 ] Unit tests for: Users Animes Services', () => {
     let errorToTest;
 
     try {
-      await newUserAnimesServices.update(USER_ANIMES_INSTANCE_MOCK_WITH_ID._id, WRONG_USER_ANIMES_INSTANCE as IUserAnime);
+      await newUserAnimesServices.update(USER_ANIMES_INSTANCE_MOCK_WITH_ID._id, WRONG_USER_ANIMES_INSTANCE as unknown as IAnime);
     } catch (error: any) {
       errorToTest = error;
     }

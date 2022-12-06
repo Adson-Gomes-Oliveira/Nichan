@@ -1,14 +1,14 @@
-import userAnimesZodSchema, { IUserAnime } from './../interfaces/user.animes.interface';
+import animesZodSchema, { IAnime } from '../interfaces/anime.interface';
 import IServices from "../interfaces/services.interface";
 import IModel from '../interfaces/model.interface';
 import ErrorMessages from '../helpers/ErrorMessages';
 import HttpStatus from '../helpers/HttpStatus';
 
-class UserAnimesServices implements IServices<IUserAnime> {
-  constructor(private _model: IModel<IUserAnime>) {};
+class AnimesServices implements IServices<IAnime> {
+  constructor(private _model: IModel<IAnime>) {};
 
-  public async create(payload: IUserAnime): Promise<IUserAnime> {
-    const validation = userAnimesZodSchema.safeParse(payload);
+  public async create(payload: IAnime): Promise<IAnime> {
+    const validation = animesZodSchema.safeParse(payload);
     if (!validation.success) {
       const err = new Error(validation.error.message);
       err.name = ErrorMessages.PAYLOAD_INCORRECT;
@@ -20,12 +20,12 @@ class UserAnimesServices implements IServices<IUserAnime> {
     return request;
   };
 
-  public async findAll(): Promise<IUserAnime[]> {
+  public async findAll(): Promise<IAnime[]> {
     const request = await this._model.read({});
     return request;
   };
 
-  public async findOne(_id: string): Promise<IUserAnime | null> {
+  public async findOne(_id: string): Promise<IAnime | null> {
     const request = await this._model.readOne(_id);
 
     if (!request) {
@@ -38,8 +38,8 @@ class UserAnimesServices implements IServices<IUserAnime> {
     return request;
   };
 
-  public async update(_id: string, payload: IUserAnime): Promise<IUserAnime | null> {
-    const validation = userAnimesZodSchema.safeParse(payload);
+  public async update(_id: string, payload: IAnime): Promise<IAnime | null> {
+    const validation = animesZodSchema.safeParse(payload);
     if (!validation.success) {
       const err = new Error(validation.error.message);
       err.name = ErrorMessages.PAYLOAD_INCORRECT;
@@ -59,7 +59,7 @@ class UserAnimesServices implements IServices<IUserAnime> {
     return request;
   };
 
-  public async delete(_id: string): Promise<IUserAnime | null> {
+  public async delete(_id: string): Promise<IAnime | null> {
     const request = await this._model.delete(_id);
 
     if (!request) {
@@ -73,4 +73,4 @@ class UserAnimesServices implements IServices<IUserAnime> {
   };
 }
 
-export default UserAnimesServices;
+export default AnimesServices;

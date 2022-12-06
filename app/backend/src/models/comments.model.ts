@@ -4,8 +4,7 @@ import MongoModel from './mongo.model';
 
 const commentsMongooseSchema = new Schema<IComment>({
   user_id: String,
-  anime_id: String,
-  episode: Number,
+  anime_internal_id: String,
   comment: String,
   rating: Number,
 }, { versionKey: false });

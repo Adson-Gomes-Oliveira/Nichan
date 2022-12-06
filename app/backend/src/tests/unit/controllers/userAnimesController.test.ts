@@ -1,9 +1,9 @@
 import Sinon, * as sinon from 'sinon';
 import { Request, Response } from 'express';
 import chai from 'chai';
-import UserAnimesModel from '../../../models/users.animes.model';
-import UserAnimesServices from '../../../services/user.animes.services';
-import UserAnimesController from '../../../controllers/user.animes.controller';
+import UserAnimesModel from '../../../models/animes.model';
+import UserAnimesServices from '../../../services/animes.services';
+import UserAnimesController from '../../../controllers/animes.controller';
 import {
   USER_ANIMES_INSTANCE_MOCK,
   USER_ANIMES_INSTANCE_MOCK_WITH_ID,

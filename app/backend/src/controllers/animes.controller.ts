@@ -1,10 +1,10 @@
-import { IUserAnime } from '../interfaces/user.animes.interface';
+import { IAnime } from '../interfaces/anime.interface';
 import { Request, Response } from 'express';
-import UserAnimesServices from '../services/user.animes.services';
+import AnimesServices from '../services/animes.services';
 import HttpStatus from '../helpers/HttpStatus';
 
 class UserAnimesController {
-  constructor(private _services: UserAnimesServices) {
+  constructor(private _services: AnimesServices) {
     this.create = this.create.bind(this);
     this.findAll = this.findAll.bind(this);
     this.findOne = this.findOne.bind(this);
@@ -13,7 +13,7 @@ class UserAnimesController {
   };
 
   public async create(req: Request, res: Response): Promise<Response> {
-    const payload = req.body as IUserAnime
+    const payload = req.body as IAnime
     const result = await this._services.create(payload);
     return res.status(HttpStatus.CREATED).json(result);
   }
@@ -29,7 +29,7 @@ class UserAnimesController {
   }
 
   public async update(req: Request, res: Response): Promise<Response> {
-    const payload = req.body as IUserAnime
+    const payload = req.body as IAnime
     const result = await this._services.update(req.params.id, payload);
     return res.status(HttpStatus.CREATED).json(result);
   }

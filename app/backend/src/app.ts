@@ -3,7 +3,7 @@ import 'express-async-errors';
 import cors from 'cors';
 import helmet from 'helmet';
 import UsersRoute from './routes/users.routes';
-import UserAnimesRoute from './routes/user.animes.routes';
+import UserAnimesRoute from './routes/animes.routes';
 import CommentsRoute from './routes/comments.routes';
 import LoginRoute from './routes/login.routes';
 import errorMiddleware from './middlewares/error.middleware';

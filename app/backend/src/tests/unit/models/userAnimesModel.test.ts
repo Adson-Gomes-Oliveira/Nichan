@@ -8,7 +8,7 @@ import {
   USER_ANIMES_INSTANCE_MOCK_WITH_ID,
 } from '../../mock';
 import HttpStatus from '../../../helpers/HttpStatus';
-import UserAnimesModel from '../../../models/users.animes.model';
+import UserAnimesModel from '../../../models/animes.model';
 
 const { expect } = chai;
 

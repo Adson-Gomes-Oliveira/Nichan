@@ -3,14 +3,19 @@ import { IUser } from './../interfaces/user.interface';
 import MongoModel from './mongo.model';
 
 const userMongooseSchema = new Schema<IUser>({
-  nickName: String,
+  tag: String,
   fullName: String,
-  birthDate: Date,
+  birthDate: String,
   picture: String,
+  aboutMe: String,
   email: String,
   password: String,
   gender: String,
-  user_animes_list: Array,
+  showFavorites: Boolean,
+  socialMedia: Array,
+  anime_list: Array,
+  achievements: Array,
+  memberSince: Date,
 }, { versionKey: false });
 
 class UsersModel extends MongoModel<IUser> {
