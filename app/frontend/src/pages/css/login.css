@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Breakpoint >= 320x640 */
 @layer base {
   .login-section {
-    @apply
+    @apply h-screen flex flex-col justify-between bg-lightPurple;
   }
 }

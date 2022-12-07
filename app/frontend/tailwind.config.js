@@ -9,6 +9,10 @@ module.exports = {
         midnightPurple: "#08000F",
         golden: "#F9A03F",
         scarlet: "",
+      },
+      fontFamily: {
+        'bebasNeue': [ 'bebasNeue', 'sans-serif' ],
+        'poppins': [ 'poppins', 'sans-serif' ]
       }
     },
   },
