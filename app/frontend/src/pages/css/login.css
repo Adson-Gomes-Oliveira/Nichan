@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Breakpoint >= 320x640 */
+/* Breakpoint >= width: 320 */
 @layer base {
   .login-section {
-    @apply h-screen flex flex-col items-center bg-lightPurple;
+    @apply flex flex-col items-center bg-lightPurple;
   }
 
   .header-login {
@@ -16,12 +16,20 @@
     @apply w-[20%] ml-1;
   }
 
+  .shape-login-svg {
+    @apply mt-2 w-full;
+  }
+
+  .bg-login-img {
+    @apply w-[90%] fixed bottom-0 z-0 opacity-40;
+  }
+
   .form-login {
-    @apply font-poppins flex flex-col items-center;
+    @apply font-poppins flex flex-col items-center relative z-10;
   }
 
   .form-login label {
-    @apply my-3 w-[80%] flex flex-col items-center;
+    @apply my-3 flex flex-col items-center;
   }
 
   .form-login span {
@@ -42,5 +50,24 @@
 
   .form-login div input:focus {
     @apply outline-none;
+  }
+
+  .form-login button {
+    @apply w-[60%] mt-4 py-2 text-sm text-gray-600 bg-white rounded-2xl;
+  }
+
+  .register {
+    @apply mt-12 py-4 w-screen bg-black bg-opacity-40 border-none text-center relative z-10;
+  }
+
+  .register span {
+    @apply text-sm text-white font-poppins;
+  }
+}
+
+/* Breakpoint >= width: 768 */
+@layer base {
+  .form-login label {
+    @apply sm:bg-black;
   }
 }

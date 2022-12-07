@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ShapeLoginSVG from '../assets/svgs/shape-curve-login-screen.svg';
 import CuteCatSVG from '../assets/svgs/cute-cats.svg';
+import AnimeGirl from '../assets/images/Anime-Girl-PNG-Pic.png';
 import './css/login.css';
 
 function Login(): JSX.Element {
@@ -10,29 +11,30 @@ function Login(): JSX.Element {
         <h1>Nichan</h1>
         <img src={ CuteCatSVG } alt="" />
       </header>
-      <div className="shape-svg-login">
-        <img src={ ShapeLoginSVG } alt="" />
-      </div>
+      <img className="shape-login-svg" src={ ShapeLoginSVG } alt="" />
+      <img className="bg-login-img" src={ AnimeGirl } alt="anime-girl" />
       <form className="form-login">
-        <label htmlFor="">
+        <label htmlFor="email">
           <span>Digite seu email</span>
           <div>
             <span className="material-icons-outlined">email</span>
-            <input type="text" />
+            <input id="email" type="text" />
           </div>
         </label>
-        <label htmlFor="">
+        <label htmlFor="password">
           <span>Digite sua senha</span>
           <div>
             <span className="material-icons-outlined">lock</span>
-            <input type="password" />
+            <input id="password" type="password" />
           </div>
         </label>
-        <button type="button"></button>
-        <Link to="register">
-          <div></div>
-        </Link>
+        <button type="button">LOGIN</button>
       </form>
+      <Link to="register">
+        <div className="register">
+          <span>Não tem uma conta? Cadastre-se aqui</span>
+        </div>
+      </Link>
     </section>
   )
 }
