@@ -5,6 +5,42 @@
 /* Breakpoint >= 320x640 */
 @layer base {
   .login-section {
-    @apply h-screen flex flex-col justify-between bg-lightPurple;
+    @apply h-screen flex flex-col items-center bg-lightPurple;
+  }
+
+  .header-login {
+    @apply pt-5 text-4xl text-white font-bebasNeue flex items-end justify-center;
+  }
+
+  .header-login img {
+    @apply w-[20%] ml-1;
+  }
+
+  .form-login {
+    @apply font-poppins flex flex-col items-center;
+  }
+
+  .form-login label {
+    @apply my-3 w-[80%] flex flex-col items-center;
+  }
+
+  .form-login span {
+    @apply text-sm self-start text-white;
+  }
+
+  .form-login div {
+    @apply mt-2 py-[0.10rem] flex items-center border-b-2 border-white;
+  }
+
+  .form-login div span {
+    @apply text-base text-white;
+  }
+
+  .form-login div input {
+    @apply w-full pl-2 text-sm text-white bg-transparent;
+  }
+
+  .form-login div input:focus {
+    @apply outline-none;
   }
 }

@@ -15,12 +15,18 @@ function Login(): JSX.Element {
       </div>
       <form className="form-login">
         <label htmlFor="">
-          <span></span>
-          <input type="text" />
+          <span>Digite seu email</span>
+          <div>
+            <span className="material-icons-outlined">email</span>
+            <input type="text" />
+          </div>
         </label>
         <label htmlFor="">
-          <span></span>
-          <input type="text" />
+          <span>Digite sua senha</span>
+          <div>
+            <span className="material-icons-outlined">lock</span>
+            <input type="password" />
+          </div>
         </label>
         <button type="button"></button>
         <Link to="register">
