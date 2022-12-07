@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import ShapeLoginSVG from '../assets/svgs/shape-curve-login-screen.svg';
 import CuteCatSVG from '../assets/svgs/cute-cats.svg';
 import AnimeGirl from '../assets/images/Anime-Girl-PNG-Pic.png';
+import { ErrorLoginMessages } from '../helpers/errorMessages';
+import loginUser from "../requests/userRequests";
 
 import './css/login.css';
 
@@ -12,13 +14,58 @@ function Login(): JSX.Element {
     email: '',
     password: '',
   });
+  const [errorLogin, setErrorLogin] = useState({
+    status: false,
+    error: '',
+  });
+  const navigate = useNavigate();
+
+  const verifyLogin = (): string => {
+    const emailRegex = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
+    if(loginInput.email.length < 1 || !emailRegex.test(loginInput.email)) {
+      setErrorLogin({
+        status: true,
+        error: ErrorLoginMessages.errorEmail,
+      });
+
+      return errorLogin.error;
+    }
+
+    if(loginInput.password.length < 8) {
+      setErrorLogin({
+        status: true,
+        error: ErrorLoginMessages.errorPassword,
+      });
+
+      return errorLogin.error;
+    }
+
+    return '';
+  }
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = event.target;
+    setErrorLogin({
+      status: false,
+      error: '',
+    })
+
     setLoginInput({
       ...loginInput,
       [id]: value,
     });
+  }
+
+  const handleLogin = async (): Promise<void | null> => {
+    const isLoginFormatOK = verifyLogin() === '';
+    if (!isLoginFormatOK) {
+      return null;
+    }
+
+    const requestLogin = await loginUser(loginInput.email, loginInput.password);
+    localStorage.setItem('user', JSON.stringify(requestLogin));
+    navigate('/home');
+
   }
 
   return(
@@ -56,7 +103,15 @@ function Login(): JSX.Element {
             />
           </div>
         </label>
-        <button type="button">LOGIN</button>
+        { errorLogin.status && (
+          <span className="error-message-login">{`* ${errorLogin.error}`}</span>
+        )}
+        <button
+          type="button"
+          onClick={handleLogin}
+        >
+          LOGIN
+        </button>
       </form>
 
       <Link to="register">
