@@ -12,7 +12,11 @@ const userMongooseSchema = new Schema<IUser>({
   password: String,
   gender: String,
   showFavorites: Boolean,
-  socialMedia: Array,
+  socialMedia: {
+    instagram: String,
+    amino: String,
+    tiktok: String,
+  },
   anime_list: Array,
   achievements: Array,
   memberSince: Date,

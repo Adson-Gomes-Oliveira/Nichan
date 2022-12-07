@@ -35,6 +35,12 @@ export const WRONG_USER_ANIMES_INSTANCE = {
 
 export const USER_ANIMES_INSTANCE_MOCK: IAnime = {
   anime_id: '6073-7bde-2e93-9791ceda1fe5',
+  cover: 'https://somelink.com.br',
+  genres: ['shonen'],
+  studios: ['mapa'],
+  status: 'Ongoing',
+  description: '',
+  totalEpisodes: 5,
   episodes: [],
   rating: 4,
   comments: [],
@@ -43,6 +49,12 @@ export const USER_ANIMES_INSTANCE_MOCK: IAnime = {
 export const USER_ANIMES_INSTANCE_MOCK_WITH_ID = {
   _id: '62261a65d66c6be0a63c051f',
   anime_id: '6073-7bde-2e93-9791ceda1fe5',
+  cover: 'https://somelink.com.br',
+  genres: ['shonen'],
+  studios: ['mapa'],
+  status: 'Ongoing',
+  description: '',
+  totalEpisodes: 5,
   episodes: [],
   rating: 4,
   comments: [],

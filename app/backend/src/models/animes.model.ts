@@ -4,6 +4,12 @@ import MongoModel from './mongo.model';
 
 const animesMongooseSchema = new Schema<IAnime>({
   anime_id: String,
+  cover: String,
+  genres: Array,
+  studios: Array,
+  status: String,
+  description: String,
+  totalEpisodes: Number,
   episodes: Array,
   rating: Number,
   comments: Array,

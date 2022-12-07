@@ -1,11 +1,5 @@
 import { z } from 'zod';
 
-const userMediaZodSchema = z.object({
-  instagram: z.string(),
-  amino: z.string(),
-  tiktok: z.string(),
-});
-
 const userAnimesZodSchema = z.object({
   external_id: z.string(),
   internal_id: z.string(),
@@ -22,7 +16,11 @@ const userZodSchema = z.object({
   password: z.string().min(8),
   gender: z.enum(['male', 'female', 'transgender', 'non-binary']),
   showFavorites: z.boolean(),
-  socialMedia: z.array(userMediaZodSchema).optional(),
+  socialMedia: z.object({
+    instagram: z.string(),
+    amino: z.string(),
+    tiktok: z.string(),
+  }).optional(),
   anime_list: z.array(userAnimesZodSchema).optional(),
   achievements: z.string().array(),
   memberSince: z.date(),
