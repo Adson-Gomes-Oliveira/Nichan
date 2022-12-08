@@ -11,9 +11,7 @@ class LoginController {
   public async SignIn(req: Request, res: Response): Promise<Response> {
     const payload: ILogin = req.body;
     const result = await this._services.SignIn(payload);
-    return res.status(HttpStatus.OK).json({
-      token: result,
-    });
+    return res.status(HttpStatus.OK).json(result);
   }
 }
 

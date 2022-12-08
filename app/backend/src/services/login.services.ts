@@ -9,7 +9,7 @@ import ErrorMessages from '../helpers/ErrorMessages';
 class LoginServices {
   constructor(private _model: UsersModel) {}
 
-  public async SignIn(loginInfos: ILogin): Promise<string> {
+  public async SignIn(loginInfos: ILogin): Promise<unknown> {
     const validation = loginZodSchema.safeParse(loginInfos);
     if (!validation.success) {
       const err = new Error(validation.error.message);
@@ -18,11 +18,9 @@ class LoginServices {
       throw err;
     }
 
-    const { email, password } = loginInfos;
-    console.log(loginInfos);
+    const { email } = loginInfos;
     
     const userToLogin = await this._model.read({ email });
-    console.log(userToLogin);
     
     if (userToLogin.length === 0) {
       const err = new Error(ErrorMessages.NO_USER);
@@ -31,7 +29,7 @@ class LoginServices {
       throw err;
     }
 
-    const verifyPassword = await bcrypt.compare(password, userToLogin[0].password);
+    const verifyPassword = await bcrypt.compare(loginInfos.password, userToLogin[0].password);
     if (!verifyPassword) {
       const err = new Error(ErrorMessages.WRONG_PASSWORD);
       err.name = 'WRONG_PASSWORD';
@@ -39,9 +37,13 @@ class LoginServices {
       throw err;
     }
 
-    const { password: _, ...noPasswordUser } = userToLogin[0];
+    const { password, ...noPasswordUser } = userToLogin[0];
+    
     const token = JSONWebToken.createToken(noPasswordUser as IUser);
-    return token;
+    return {
+      data: noPasswordUser,
+      token,
+    };
   }
 }
 
