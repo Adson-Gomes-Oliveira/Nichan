@@ -64,7 +64,7 @@ function Login(): JSX.Element {
 
     const requestLogin = await loginUser(loginInput.email, loginInput.password);
     localStorage.setItem('user', JSON.stringify(requestLogin));
-    navigate('/home');
+    navigate('/');
   }
 
   return(
