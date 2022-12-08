@@ -1,8 +1,10 @@
-import React from 'react';
+import Header from '../components/Header';
 
 function Homepage(): JSX.Element {
   return(
-    <span>OI</span>
+    <section>
+      <Header />
+    </section>
   );
 }
 

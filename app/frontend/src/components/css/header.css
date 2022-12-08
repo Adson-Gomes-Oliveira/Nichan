@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .general-header {
+    @apply flex flex-col text-white;
+  }
+
+  .top-header {
+    @apply flex items-start;
+  }
+
+  .top-header .logo-header {
+    @apply flex items-end;
+  }
+
+  .top-header .logo-header h1 {
+    @apply font-bebasNeue text-2xl leading-5;
+  }
+
+  .top-header .logo-header img {
+    @apply w-[13%] ml-1;
+  }
+
+  .top-header span {
+    @apply text-6xl;
+  }
+
+  .menu-header ul {
+    @apply flex justify-between font-poppins;
+  }
+}
