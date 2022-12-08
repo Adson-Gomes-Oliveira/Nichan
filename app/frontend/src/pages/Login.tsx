@@ -5,7 +5,7 @@ import ShapeLoginSVG from '../assets/svgs/shape-curve-login-screen.svg';
 import CuteCatSVG from '../assets/svgs/cute-cats.svg';
 import AnimeGirl from '../assets/images/Anime-Girl-PNG-Pic.png';
 import { ErrorLoginMessages } from '../helpers/errorMessages';
-import loginUser from "../requests/userRequests";
+import loginUser from "../services/userRequests";
 
 import './css/login.css';
 
