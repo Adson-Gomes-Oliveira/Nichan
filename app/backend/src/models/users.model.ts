@@ -19,7 +19,7 @@ const userMongooseSchema = new Schema<IUser>({
   },
   anime_list: Array,
   achievements: Array,
-  memberSince: Date,
+  memberSince: String,
 }, { versionKey: false });
 
 class UsersModel extends MongoModel<IUser> {

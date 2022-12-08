@@ -23,7 +23,7 @@ const userZodSchema = z.object({
   }).optional(),
   anime_list: z.array(userAnimesZodSchema).optional(),
   achievements: z.string().array(),
-  memberSince: z.date(),
+  memberSince: z.string(),
 });
 
 export type IUser = z.infer<typeof userZodSchema>;
