@@ -4,7 +4,7 @@
 
 @layer base {
   .general-header {
-    @apply flex flex-col text-white;
+    @apply px-4 py-3 flex flex-col text-white;
   }
 
   .top-header {
@@ -28,6 +28,6 @@
   }
 
   .menu-header ul {
-    @apply flex justify-between font-poppins;
+    @apply mt-3 flex justify-between font-poppins text-sm;
   }
 }

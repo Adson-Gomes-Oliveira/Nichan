@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .homepage-section {
+    background: url('../../assets/images/background-anime.png'), rgba(8, 0, 15, 0.932);
+    background-size: cover;
+    background-blend-mode: darken;
+    background-position: center;
+  }
+
+  .body-homepage {
+    @apply text-white px-4 py-3;
+  }
+
+  .welcome-body {
+    @apply flex flex-col;
+  }
+
+  .welcome-body h2 {
+    @apply mt-5 text-2xl font-bebasNeue self-center;
+  }
+
+  .welcome-body p {
+    @apply my-3 text-sm font-poppins;
+  }
+
+  .welcome-body span {
+    @apply text-4xl self-center animate-bounce pointer-events-none;
+  }
+
+  .howto-homepage {
+    @apply mt-16;
+  }
+
+  .howto-homepage h3 {
+    @apply font-bebasNeue text-xl;
+  }
+
+  .howto-homepage p {
+    @apply my-2;
+  }
+
+  .footer-homepage {
+    @apply py-6 mt-8 flex flex-col text-white items-center bg-midnightPurple;
+  }
+
+  .footer-homepage .social-footer {
+    @apply w-[45%] mb-2 flex justify-between;
+  }
+
+  .footer-homepage .footer-form-link {
+    @apply mt-4 text-xs text-center underline;
+  }
+}

@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         'bebasNeue': [ 'bebasNeue', 'sans-serif' ],
         'poppins': [ 'poppins', 'sans-serif' ]
+      },
+      backgroundImage: {
+        'anime-background': "url('/src/assets/images/background-anime.png')"
       }
     },
   },

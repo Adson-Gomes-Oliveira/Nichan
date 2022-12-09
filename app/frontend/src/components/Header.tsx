@@ -1,4 +1,5 @@
 import CuteCatSVG from '../assets/svgs/cute-cats.svg';
+import { Link } from 'react-router-dom';
 import './css/header.css';
 
 function Header(): JSX.Element {
@@ -13,11 +14,11 @@ function Header(): JSX.Element {
       </div>
       <nav className="menu-header">
         <ul>
-          <li>Inicio</li>
-          <li>Animes</li>
-          <li>Favoritos</li>
-          <li>Usuários</li>
-          <li>Login</li>
+          <Link to="/"><li>Inicio</li></Link>
+          <Link to="/animes"><li>Animes</li></Link>
+          <Link to="/favorites"><li>Favoritos</li></Link>
+          <Link to="/users"><li>Usuários</li></Link>
+          <Link to="/login"><li>Login</li></Link>
         </ul>
       </nav>
     </header>
