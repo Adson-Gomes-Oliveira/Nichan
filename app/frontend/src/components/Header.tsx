@@ -29,7 +29,7 @@ function Header(): JSX.Element {
             </li>
           </Link>
           <Link to="/animes">
-            <li className={focus === '/animes' ? "text-golden" : "text-white"}>
+            <li className={focus.includes('animes') ? "text-golden" : "text-white"}>
               Animes
             </li>
           </Link>
