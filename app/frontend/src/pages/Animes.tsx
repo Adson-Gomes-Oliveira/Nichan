@@ -50,6 +50,7 @@ function Animes(): JSX.Element {
             const { title, image, id } = anime;
             return (
               <Link key={uuid()} to={`/animes/${id}`}>
+                <span>{title}</span>
                 <img src={image} alt={`Capa do Anime: ${title}`} />
               </Link>
             );

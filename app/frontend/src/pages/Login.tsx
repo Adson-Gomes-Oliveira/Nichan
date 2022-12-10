@@ -61,7 +61,7 @@ function Login(): JSX.Element {
     if (!isLoginFormatOK) {
       return null;
     }
-
+    
     const requestLogin = await loginUser(loginInput.email, loginInput.password);
     localStorage.setItem('user', JSON.stringify(requestLogin));
     navigate('/');

@@ -47,7 +47,11 @@
   }
 
   .anime-found-cards a {
-    @apply w-[40%] m-2;
+    @apply w-[40%] m-2 mb-10;
+  }
+
+  .anime-found-cards a span {
+    @apply text-white text-xs;
   }
 
   .footer {
