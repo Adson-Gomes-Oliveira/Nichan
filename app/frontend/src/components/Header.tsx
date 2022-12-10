@@ -1,8 +1,17 @@
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import CuteCatSVG from '../assets/svgs/cute-cats.svg';
 import { Link } from 'react-router-dom';
 import './css/header.css';
 
 function Header(): JSX.Element {
+  const location = useLocation();
+  const [focus, setFocus] = useState<string>('');
+
+  useEffect(() => {
+    setFocus(location.pathname);
+  }, [location.pathname]);
+
   return(
     <header className="general-header">
       <div className="top-header">
@@ -14,10 +23,26 @@ function Header(): JSX.Element {
       </div>
       <nav className="menu-header">
         <ul>
-          <Link to="/"><li>Inicio</li></Link>
-          <Link to="/animes"><li>Animes</li></Link>
-          <Link to="/favorites"><li>Favoritos</li></Link>
-          <Link to="/users"><li>Usuários</li></Link>
+          <Link to="/">
+            <li className={focus === '/' ? "text-golden" : "text-white"}>
+              Inicio
+            </li>
+          </Link>
+          <Link to="/animes">
+            <li className={focus === '/animes' ? "text-golden" : "text-white"}>
+              Animes
+            </li>
+          </Link>
+          <Link to="/favorites">
+            <li className={focus === '/favorites' ? "text-golden" : "text-white"}>
+              Favoritos
+            </li>
+          </Link>
+          <Link to="/users">
+            <li className={focus === '/users' ? "text-golden" : "text-white"}>
+              Usuários
+            </li>
+          </Link>
           <Link to="/login"><li>Login</li></Link>
         </ul>
       </nav>

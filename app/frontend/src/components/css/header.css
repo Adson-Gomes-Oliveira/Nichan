@@ -30,4 +30,8 @@
   .menu-header ul {
     @apply mt-3 flex justify-between font-poppins text-sm;
   }
+
+  .menu-header ul li:hover {
+    @apply text-golden;
+  }
 }
