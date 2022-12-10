@@ -20,6 +20,14 @@ class UsersServices implements IServices<IUser> {
     const encryptedPassword = await bcrypt.hash(payload.password, 10);
     payload.password = encryptedPassword;
 
+    const verifyExistence = await this._model.read({ email: payload.email });
+    if (verifyExistence) {
+      const err = new Error(ErrorMessages.EMAIL_ALREADY_EXIST);
+      err.name = 'EMAIL_EXISTS';
+      err.stack = HttpStatus.ALREADY_EXISTS.toString();
+      throw err;
+    }
+
     const request = await this._model.create(payload);
     return request;
   };

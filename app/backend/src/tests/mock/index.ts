@@ -34,7 +34,8 @@ export const WRONG_USER_ANIMES_INSTANCE = {
 }
 
 export const USER_ANIMES_INSTANCE_MOCK: IAnime = {
-  anime_id: '6073-7bde-2e93-9791ceda1fe5',
+  anime_external_id: '6073-7bde-2e93-9791ceda1fe5',
+  title: 'Naruto',
   cover: 'https://somelink.com.br',
   genres: ['shonen'],
   studios: ['mapa'],
@@ -48,7 +49,8 @@ export const USER_ANIMES_INSTANCE_MOCK: IAnime = {
 
 export const USER_ANIMES_INSTANCE_MOCK_WITH_ID = {
   _id: '62261a65d66c6be0a63c051f',
-  anime_id: '6073-7bde-2e93-9791ceda1fe5',
+  anime_external_id: '6073-7bde-2e93-9791ceda1fe5',
+  title: 'Naruto',
   cover: 'https://somelink.com.br',
   genres: ['shonen'],
   studios: ['mapa'],
@@ -78,7 +80,7 @@ export const USER_INSTANCE_MOCK: IUser = {
   anime_list: [],
   showFavorites: false,
   achievements: [],
-  memberSince: new Date(),
+  memberSince: '2000-10-10',
 };
 
 export const USER_INSTANCE_MOCK_WITH_ID = {

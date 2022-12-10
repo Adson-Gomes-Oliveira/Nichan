@@ -5,6 +5,7 @@ enum ErrorMessages {
   UNAUTHORIZED = 'Token is wrong or missing',
   NO_USER = 'User not found!',
   WRONG_PASSWORD = 'Password is incorrect',
+  EMAIL_ALREADY_EXIST = 'Email already registered',
 }
 
 export default ErrorMessages;

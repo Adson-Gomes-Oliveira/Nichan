@@ -9,7 +9,8 @@ const episodeZodSchema = z.object({
 });
 
 const animeZodSchema = z.object({
-  anime_id: z.string(),
+  anime_external_id: z.string(),
+  title: z.string(),
   cover: z.string(),
   genres: z.string().array(),
   studios: z.string().array().optional(),
@@ -17,6 +18,7 @@ const animeZodSchema = z.object({
   description: z.string(),
   totalEpisodes: z.number(),
   episodes: z.array(episodeZodSchema).optional(),
+  releaseDate: z.string().optional(),
   rating: z.number().int().lte(5),
   comments: z.array(commentZodSchema),
 });

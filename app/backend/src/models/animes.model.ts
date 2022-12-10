@@ -3,7 +3,8 @@ import { IAnime } from '../interfaces/anime.interface';
 import MongoModel from './mongo.model';
 
 const animesMongooseSchema = new Schema<IAnime>({
-  anime_id: String,
+  anime_external_id: String,
+  title: String,
   cover: String,
   genres: Array,
   studios: Array,
@@ -11,6 +12,7 @@ const animesMongooseSchema = new Schema<IAnime>({
   description: String,
   totalEpisodes: Number,
   episodes: Array,
+  releaseDate: String,
   rating: Number,
   comments: Array,
 }, { versionKey: false });
