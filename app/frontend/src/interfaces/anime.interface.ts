@@ -17,7 +17,8 @@ interface IAnimeExternal {
 }
 
 interface IAnime {
-  anime_id: string;
+  anime_external_id: string;
+  title: string;
   cover: string;
   genres: string[];
   studios: string[];
@@ -25,6 +26,7 @@ interface IAnime {
   description: string;
   totalEpisodes: number;
   episodes: IEpisode[];
+  releaseDate: string;
   rating: number;
   comments: IComment[];
 }
