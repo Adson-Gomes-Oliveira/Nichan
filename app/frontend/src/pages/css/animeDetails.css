@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .anime-details-section {
+    background: url('../../assets/images/background-anime.png'), rgba(8, 0, 15, 0.932);
+    background-size: cover;
+    background-blend-mode: darken;
+    background-position: center;
+  }
+}
