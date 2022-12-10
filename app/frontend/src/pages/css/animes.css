@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .animes-section {
+    background: url('../../assets/images/background-anime.png'), rgba(8, 0, 15, 0.932);
+    background-size: cover;
+    background-blend-mode: darken;
+    background-position: center;
+  }
+
+  .search-animes {
+    @apply mt-5 ml-4 flex text-white items-center;
+  }
+
+  .search-animes input {
+    @apply mr-2 pl-2 py-[0.1rem] w-[60%] rounded-xl text-lightPurple text-sm;
+  }
+
+  .search-animes button {
+    @apply flex items-center;
+  }
+
+  .top-animes {
+    @apply mt-10 px-4 flex flex-col items-center;
+  }
+
+  .top-animes h2 {
+    @apply mb-10 text-white text-lg font-bebasNeue;
+  }
+
+  .top-animes span:first-of-type {
+    @apply mt-5 mb-10 text-white text-center text-base font-poppins;
+  }
+
+  .top-animes span:last-of-type {
+    @apply w-[80%] self-start text-white text-sm font-poppins;
+  }
+
+  .top-animes img {
+    @apply w-[70%] self-end relative bottom-0 z-0;
+  }
+
+  .anime-found-cards {
+    @apply mt-10 flex flex-wrap justify-center;
+  }
+
+  .anime-found-cards a {
+    @apply w-[40%] m-2;
+  }
+
+  .footer {
+    @apply mt-0;
+  }
+}
