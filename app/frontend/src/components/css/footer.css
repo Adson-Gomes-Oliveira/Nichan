@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .footer {
+    @apply py-6 mt-8 flex flex-col text-white items-center bg-midnightPurple;
+  }
+
+  .footer .social-footer {
+    @apply w-[45%] mb-2 flex justify-between;
+  }
+
+  .footer .footer-form-link {
+    @apply mt-4 text-xs text-center underline;
+  }
+}

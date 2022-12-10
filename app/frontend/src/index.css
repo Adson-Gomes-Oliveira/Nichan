@@ -22,6 +22,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Logic to remove background of input text found on stackoverflow link below...
+https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete */
+input:-webkit-autofill {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: white !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
