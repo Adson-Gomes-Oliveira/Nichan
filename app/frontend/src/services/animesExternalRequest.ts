@@ -1,4 +1,4 @@
-import { animesExternalAPI, api } from ".";
+import setToken, { animesExternalAPI, api } from ".";
 import { IAnimeExternal } from "../interfaces/anime.interface";
 import IAnime from "../interfaces/anime.interface";
 
@@ -11,29 +11,27 @@ async function findExternalAnimes(query: string): Promise<IAnimeExternal[]> {
 }
 
 async function findOneExternalAnime(ID: string): Promise<IAnime> {
+  setToken(JSON.parse(localStorage.getItem('user') as string)?.token);
+
   const request = await animesExternalAPI.get(`/info/${ID}`)
     .then((response) => response.data);
   
   const newInternalAnime: IAnime = {
-    anime_external_id: request.id,
+    anime_external_id: ID,
     title: request.title,
     cover: request.image,
     genres: request.genres,
-    studios: request.studios,
-    status: request.status,
+    status: request.releaseDate.split('\n').pop(),
     description: request.description,
-    totalEpisodes: request.totalEpisodes,
     episodes: request.episodes,
-    releaseDate: request.releaseDate,
+    releaseDate: request.studios[1],
     rating: 0,
     comments: [],
   };
   
-  await api.post('/animes', newInternalAnime);
+  await api.post('/animes/register', newInternalAnime);
   return newInternalAnime;
 }
-
-findExternalAnimes('8ca83a7e-2ed3-5274-c812-10c56361c4df');
 
 export { findOneExternalAnime }
 export default findExternalAnimes;

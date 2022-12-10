@@ -21,10 +21,8 @@ interface IAnime {
   title: string;
   cover: string;
   genres: string[];
-  studios: string[];
   status: string;
   description: string;
-  totalEpisodes: number;
   episodes: IEpisode[];
   releaseDate: string;
   rating: number;

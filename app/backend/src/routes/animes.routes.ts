@@ -5,14 +5,14 @@ import AnimesController from '../controllers/animes.controller';
 
 const router = Router();
 
-const UserM = new AnimesModel();
-const UserS = new AnimesServices(UserM);
-const UserC = new AnimesController(UserS);
+const AnimesM = new AnimesModel();
+const AnimesS = new AnimesServices(AnimesM);
+const AnimesC = new AnimesController(AnimesS);
 
-router.get('/', UserC.findAll);
-router.get('/:id', UserC.findOne);
-router.post('/register', UserC.create);
-router.put('/edit/:id', UserC.update);
-router.delete('/delete/:id', UserC.delete);
+router.get('/', AnimesC.findAll);
+router.get('/:id', AnimesC.findOne);
+router.post('/register', AnimesC.create);
+router.put('/edit/:id', AnimesC.update);
+router.delete('/delete/:id', AnimesC.delete);
 
 export default router;

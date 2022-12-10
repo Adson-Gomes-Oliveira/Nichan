@@ -2,7 +2,7 @@ import { z } from 'zod';
 import commentZodSchema from './comment.interface';
 
 const episodeZodSchema = z.object({
-  epNumber: z.number().int(),
+  number: z.number().int(),
   title: z.string(),
   duration: z.string(),
   image: z.string().optional(),
@@ -13,10 +13,8 @@ const animeZodSchema = z.object({
   title: z.string(),
   cover: z.string(),
   genres: z.string().array(),
-  studios: z.string().array().optional(),
   status: z.string(),
   description: z.string(),
-  totalEpisodes: z.number(),
   episodes: z.array(episodeZodSchema).optional(),
   releaseDate: z.string().optional(),
   rating: z.number().int().lte(5),

@@ -5,14 +5,14 @@ import CommentsController from '../controllers/comments.controller';
 
 const router = Router();
 
-const UserM = new CommentsModel();
-const UserS = new CommentsServices(UserM);
-const UserC = new CommentsController(UserS);
+const CommentsM = new CommentsModel();
+const CommentsS = new CommentsServices(CommentsM);
+const CommentsC = new CommentsController(CommentsS);
 
-router.get('/', UserC.findAll);
-router.get('/:id', UserC.findOne);
-router.post('/register', UserC.create);
-router.put('/edit/:id', UserC.update);
-router.delete('/delete/:id', UserC.delete);
+router.get('/', CommentsC.findAll);
+router.get('/:id', CommentsC.findOne);
+router.post('/register', CommentsC.create);
+router.put('/edit/:id', CommentsC.update);
+router.delete('/delete/:id', CommentsC.delete);
 
 export default router;
