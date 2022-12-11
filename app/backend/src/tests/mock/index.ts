@@ -3,6 +3,7 @@ import { IAnime } from '../../interfaces/anime.interface';
 import { IUser } from './../../interfaces/user.interface';
 
 export const WRONG_ID_MOCK = '6073-7bde-2e93-9791ceda1fe5';
+export const ID_MOCK = '62261a65d66c6be0a63c051f';
 
 export const WRONG_COMMENT_INSTANCE_MOCK = {
   user_id: '62261a65d66c6be0a63c051f',
@@ -25,7 +26,7 @@ export const COMMENT_INSTANCE_MOCK_WITH_ID = {
   rating: 4
 }
 
-export const WRONG_USER_ANIMES_INSTANCE = {
+export const WRONG_ANIMES_INSTANCE = {
   anime_id: '6073-7bde-2e93-9791ceda1fe5',
   favorite: false,
   watching: true,
@@ -33,27 +34,25 @@ export const WRONG_USER_ANIMES_INSTANCE = {
   comments: [],
 }
 
-export const USER_ANIMES_INSTANCE_MOCK: IAnime = {
-  anime_external_id: '6073-7bde-2e93-9791ceda1fe5',
+export const ANIMES_INSTANCE_MOCK: IAnime = {
+  _id: '6073-7bde-2e93-9791ceda1fe5',
   title: 'Naruto',
-  cover: 'https://somelink.com.br',
+  image: 'https://somelink.com.br',
   genres: ['shonen'],
-  status: 'Ongoing',
+  status: 'finished',
   description: '',
   episodes: [],
   rating: 4,
   comments: [],
 }
 
-export const USER_ANIMES_INSTANCE_MOCK_WITH_ID = {
-  _id: '62261a65d66c6be0a63c051f',
-  anime_external_id: '6073-7bde-2e93-9791ceda1fe5',
+export const ANIMES_INSTANCE_MOCK_WITH_ID: IAnime = {
+  _id: '6073-7bde-2e93-9791ceda1fe5',
   title: 'Naruto',
-  cover: 'https://somelink.com.br',
+  image: 'https://somelink.com.br',
   genres: ['shonen'],
-  status: 'Ongoing',
+  status: 'finished',
   description: '',
-  totalEpisodes: 5,
   episodes: [],
   rating: 4,
   comments: [],
@@ -71,9 +70,9 @@ export const USER_INSTANCE_MOCK: IUser = {
   fullName: 'Adson Gomes Oliveira',
   birthDate: '2000/10/10',
   picture: '',
-  email: 'adsongoliveira2022@outlook.com',
+  email: 'teste123@email.com',
   password: '454ds5dfv131fvdfsd5fd5s2',
-  gender: 'female',
+  gender: 'male',
   anime_list: [],
   showFavorites: false,
   achievements: [],
@@ -86,7 +85,6 @@ export const USER_INSTANCE_MOCK_WITH_ID = {
   fullName: 'Adson Gomes Oliveira',
   birthDate: '2000/10/10',
   picture: '',
-  email: 'adsongoliveira2022@outlook.com',
   password: '454ds5dfv131fvdfsd5fd5s2',
   gender: 'male',
   anime_list: [

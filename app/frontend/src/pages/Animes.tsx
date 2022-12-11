@@ -6,13 +6,13 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CryAnimeGirlPNG from '../assets/images/cry-anime-girl.png';
 import findExternalAnimes from '../services/animesExternalRequest';
-import { IAnimeExternal } from '../interfaces/anime.interface';
+import { IAnimeTV } from '../interfaces/anime.interface';
 
 import './css/animes.css';
 
 function Animes(): JSX.Element {
   const [inputSearch, setInputSearch] = useState<string>('');
-  const [animes, setAnimes] = useState<IAnimeExternal[]>([]);
+  const [animes, setAnimes] = useState<IAnimeTV[]>([]);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target;
@@ -23,8 +23,6 @@ function Animes(): JSX.Element {
     if (inputSearch.length === 0) return setAnimes([]);
 
     const animeFound = await findExternalAnimes(inputSearch);
-    console.log(animeFound);
-    
     setAnimes(animeFound);
   }
 
@@ -47,11 +45,11 @@ function Animes(): JSX.Element {
       {animes.length > 0 ? (
         <div  className="anime-found-cards">
           {animes.map((anime) => {
-            const { title, image, id } = anime;
+            const { category_name, category_image, id } = anime;
             return (
               <Link key={uuid()} to={`/animes/${id}`}>
-                <span>{title}</span>
-                <img src={image} alt={`Capa do Anime: ${title}`} />
+                <span>{category_name}</span>
+                <img src={`https://cdn.appanimeplus.tk/img/${category_image}`} alt={`Capa do Anime: ${category_name}`} />
               </Link>
             );
           })}

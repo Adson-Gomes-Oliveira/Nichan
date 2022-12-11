@@ -28,7 +28,7 @@ function AnimeDetails(): JSX.Element {
         <div className="details-anime">
           <span>{animeDetails.title}</span>
           <div className="description-details">
-            <img src="https://i.animepahe.ru/posters/e3a01c608e389a61a1111d6b0e609dce.jpg" alt={`Anime - ${animeDetails.title}`} />
+            <img src={animeDetails.image} alt={`Anime - ${animeDetails.title}`} />
             <div className="text-description">
               <h3>Sobre o anime</h3>
               <p>{animeDetails.description}</p>
@@ -36,8 +36,8 @@ function AnimeDetails(): JSX.Element {
           </div>
           <div className="infos">
             <span>Nota geral: {animeDetails.rating}</span>
-            <span>Genêros: {animeDetails.genres.toString()}</span>
-            <span>Data de Lançamento: {animeDetails.releaseDate}</span>
+            <span>Genêros: {animeDetails.genres}</span>
+            <span>Ano de Lançamento: {animeDetails.releaseDate}</span>
           </div>
         </div>
       )}

@@ -4,19 +4,17 @@ import commentZodSchema from './comment.interface';
 const episodeZodSchema = z.object({
   number: z.number().int(),
   title: z.string(),
-  duration: z.string(),
-  image: z.string().optional(),
 });
 
 const animeZodSchema = z.object({
-  anime_external_id: z.string(),
+  _id: z.string(),
   title: z.string(),
-  cover: z.string(),
-  genres: z.string().array(),
-  status: z.string(),
+  image: z.string(),
   description: z.string(),
-  episodes: z.array(episodeZodSchema).optional(),
+  genres: z.string().array(),
   releaseDate: z.string().optional(),
+  status: z.enum(['ongoing', 'finished', 'hiatus', 'unknown']),
+  episodes: z.array(episodeZodSchema).optional(),
   rating: z.number().int().lte(5),
   comments: z.array(commentZodSchema),
 });
