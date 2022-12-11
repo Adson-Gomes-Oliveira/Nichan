@@ -7,13 +7,13 @@ const episodeZodSchema = z.object({
 });
 
 const animeZodSchema = z.object({
-  anime_id: z.string(),
+  _id: z.string(),
   title: z.string(),
   image: z.string(),
   description: z.string(),
   genres: z.string().array(),
   releaseDate: z.string().optional(),
-  status: z.enum(['ongoing', 'finished', 'hiatus']),
+  status: z.enum(['ongoing', 'finished', 'hiatus', 'unknown']),
   episodes: z.array(episodeZodSchema).optional(),
   rating: z.number().int().lte(5),
   comments: z.array(commentZodSchema),

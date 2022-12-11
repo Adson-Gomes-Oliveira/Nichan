@@ -1,33 +1,41 @@
 import IComment from '../interfaces/comment.interface';
 
-interface IEpisode {
-  epNumber: number;
+type StatusAnime = 'ongoing' | 'finished' | 'hiatus' | 'unknown';
+
+interface IEpisodeTV {
+  video_id: string;
+  category_id: string;
   title: string;
-  duration: string;
-  image: string;
 }
 
-interface IAnimeExternal {
-  id: string;
+interface IEpisode {
+  number: number;
   title: string;
-  image: string;
-  rating: string;
-  releaseDate: string;
-  type: string;
+}
+
+interface IAnimeTV {
+  id: string;
+  category_name: string;
+  category_image: string;
+  category_description?: string;
+  category_genres?: string;
+  ano?: string;
+  count?: string;
+  off?: string;
 }
 
 interface IAnime {
-  anime_id: string;
+  _id: string;
   title: string;
   image: string;
-  genres: string[];
-  status: string;
   description: string;
-  episodes: IEpisode[];
+  genres: string[];
   releaseDate: string;
+  status: StatusAnime;
+  episodes: IEpisode[];
   rating: number;
   comments: IComment[];
 }
 
-export type { IAnimeExternal }
+export type { IAnimeTV, IEpisodeTV, IEpisode }
 export default IAnime;

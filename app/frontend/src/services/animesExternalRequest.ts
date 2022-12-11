@@ -1,66 +1,57 @@
 import apiLocalServer, {
   setToken,
-  animesAPI_Consumet,
   animesAPI_AnimeTV,
 } from ".";
-import { IAnimeExternal } from "../interfaces/anime.interface";
+import { IAnimeTV, IEpisode } from "../interfaces/anime.interface";
 import IAnime from "../interfaces/anime.interface";
 
-async function registerAnime(consumetAPI: any, animesTVAPI: any) {
-  const imageURL = `https://cdn.appanimeplus.tk/img/${animesTVAPI.category_image}`;
+async function registerAnime(anime: IAnimeTV) {
+  let episodeNumber = 0;
+  const imageURL = `https://cdn.appanimeplus.tk/img/${anime.category_image}`;
+  
+  const animeEpisodes = await animesAPI_AnimeTV.get<IEpisode[]>(`/play-api.php?cat_id=${anime.id}`)
+    .then((response) => response.data.map((ep) => {
+      episodeNumber += 1;
+      return {
+        number: episodeNumber,
+        title: ep.title,
+      }
+    }));
 
   const newAnime: IAnime = {
-    anime_id: animesTVAPI.id,
-    title: animesTVAPI.category_name,
+    _id: anime.id,
+    title: anime.category_name,
     image: imageURL,
-    genres: animesTVAPI.category_genres,
-    description: animesTVAPI.category_description,
-    status: consumetAPI.releaseDate.split('\n').pop(),
-    episodes: consumetAPI.episodes,
-    releaseDate: consumetAPI.studios[1],
-    rating: consumetAPI.rating,
+    genres: [anime.category_genres] as string[],
+    description: anime.category_description as string,
+    status: 'unknown',
+    episodes: animeEpisodes,
+    releaseDate: anime.ano as string,
+    rating: 0,
     comments: [],
   };
-
-  console.log(newAnime);
-  
 
   await apiLocalServer.post('/animes/register', newAnime);
   return newAnime;
 }
 
-async function findExternalAnimes(query: string): Promise<IAnimeExternal[]> {
-  const request = animesAPI_Consumet.get(`/${query}`)
-    .then((response) => response.data)
-    .then((response) => response.results);
+async function findExternalAnimes(query: string): Promise<IAnimeTV[]> {
+  const noSpecialLetters = query.replace(/[&/\\#,+()$~%.'":*?<>{}]/g,' ');
+  const noWhiteSpaces = noSpecialLetters.replace(/ /g, '_').toLowerCase();
 
-  return request as unknown as IAnimeExternal[];
+  const request = await animesAPI_AnimeTV.get<IAnimeTV[]>(`/play-api.php?search=${noWhiteSpaces}`)
+    .then((response) => response.data);
+
+  return request;
 }
 
 async function findOneExternalAnime(ID: string): Promise<IAnime> {
   setToken(JSON.parse(localStorage.getItem('user') as string)?.token);
 
-  const requestConsumet = await animesAPI_Consumet.get(`/info/${ID}`)
-    .then((response) => response.data);
+  const requestAnimesTV = await animesAPI_AnimeTV.get<IAnimeTV[]>(`/play-api.php?info=${ID}`)
+    .then((response) => response.data[0]);
 
-  console.log(requestConsumet);
-  
-
-  // Removing special letters and white spaces for AnimeTV Unofficial API
-  const noSpecialLetters = requestConsumet.title.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,' ');
-  const noWhiteSpaces = noSpecialLetters.replace(/ /g, '_').toLowerCase();
-  console.log(noWhiteSpaces);
-  
-
-  const requestAnimeTV = await animesAPI_AnimeTV.get(`/play-api.php?search=${noWhiteSpaces}`)
-    .then((response) => response.data[0].id)
-    .then(async (response) => {
-      const getAnimeDetails = await animesAPI_AnimeTV.get(`/play-api.php?info=${response}`)
-        .then((response) => response.data);
-      return getAnimeDetails;
-    });
-
-  const resultAnime = await registerAnime(requestConsumet, requestAnimeTV[0]);
+  const resultAnime = await registerAnime(requestAnimesTV);
   return resultAnime;
 }
 

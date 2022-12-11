@@ -3,7 +3,7 @@ import { IAnime } from '../interfaces/anime.interface';
 import MongoModel from './mongo.model';
 
 const animesMongooseSchema = new Schema<IAnime>({
-  anime_id: String,
+  _id: String,
   title: String,
   image: String,
   genres: Array,

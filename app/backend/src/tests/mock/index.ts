@@ -35,7 +35,7 @@ export const WRONG_ANIMES_INSTANCE = {
 }
 
 export const ANIMES_INSTANCE_MOCK: IAnime = {
-  anime_id: '6073-7bde-2e93-9791ceda1fe5',
+  _id: '6073-7bde-2e93-9791ceda1fe5',
   title: 'Naruto',
   image: 'https://somelink.com.br',
   genres: ['shonen'],
@@ -47,7 +47,7 @@ export const ANIMES_INSTANCE_MOCK: IAnime = {
 }
 
 export const ANIMES_INSTANCE_MOCK_WITH_ID: IAnime = {
-  anime_id: '6073-7bde-2e93-9791ceda1fe5',
+  _id: '6073-7bde-2e93-9791ceda1fe5',
   title: 'Naruto',
   image: 'https://somelink.com.br',
   genres: ['shonen'],
