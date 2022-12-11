@@ -13,7 +13,7 @@ import UserAnimesModel from '../../../models/animes.model';
 
 const { expect } = chai;
 
-describe('[ 02 ] Unit tests for: Users Animes Model', () => {
+describe('[ 02 ] Unit tests for: Animes Model', () => {
   const newUserAnimesModel = new UserAnimesModel();
 
   before(async () => {

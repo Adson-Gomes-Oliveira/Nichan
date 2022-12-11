@@ -13,13 +13,16 @@ import HttpStatus from '../../../helpers/HttpStatus';
 
 const { expect } = chai;
 
-describe('[ 04 ] Unit tests for: Users Animes Services', () => {
+describe('[ 04 ] Unit tests for: Animes Services', () => {
   const newMongoModel = new UserAnimesModel();
   const newUserAnimesServices = new UserAnimesServices(newMongoModel);
 
   before(() => {
     sinon.stub(newMongoModel, 'create').resolves(ANIMES_INSTANCE_MOCK_WITH_ID);
-    sinon.stub(newMongoModel, 'read').resolves([ANIMES_INSTANCE_MOCK_WITH_ID]);
+    sinon.stub(newMongoModel, 'read')
+      .onFirstCall().resolves([])
+      .onSecondCall().resolves([ANIMES_INSTANCE_MOCK_WITH_ID]);
+
     sinon.stub(newMongoModel, 'readOne').resolves(ANIMES_INSTANCE_MOCK_WITH_ID);
     sinon.stub(newMongoModel, 'update').resolves(ANIMES_INSTANCE_MOCK_WITH_ID);
     sinon.stub(newMongoModel, 'delete').resolves(ANIMES_INSTANCE_MOCK_WITH_ID);

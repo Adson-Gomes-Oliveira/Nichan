@@ -17,9 +17,10 @@ class AnimesServices implements IServices<IAnime> {
     }
 
     const verifyExistence = await this._model.read({ anime_id: payload.anime_id });
-    if (verifyExistence) return null as unknown as IAnime;
+    if (verifyExistence.length > 0) return null as unknown as IAnime;
 
     const request = await this._model.create(payload);
+    
     return request;
   };
 

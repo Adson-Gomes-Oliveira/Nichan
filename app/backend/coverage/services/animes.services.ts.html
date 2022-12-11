@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/comments.services.ts</title>
+    <title>Code coverage report for services/animes.services.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> comments.services.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> animes.services.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">71.11% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/42</span>
+                <span class='fraction'>32/45</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/10</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">72.72% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>30/42</span>
+                <span class='fraction'>32/44</span>
             </div>
         
             
@@ -139,7 +139,11 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,6 +164,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -215,17 +223,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import commentZodSchema, { IComment } from "../interfaces/comment.interface";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import animesZodSchema, { IAnime } from '../interfaces/anime.interface';
 import IServices from "../interfaces/services.interface";
 import IModel from '../interfaces/model.interface';
 import ErrorMessages from '../helpers/ErrorMessages';
 import HttpStatus from '../helpers/HttpStatus';
 &nbsp;
-class CommentsServices implements IServices&lt;IComment&gt; {
-  constructor(private _model: IModel&lt;IComment&gt;) {};
+class AnimesServices implements IServices&lt;IAnime&gt; {
+  constructor(private _model: IModel&lt;IAnime&gt;) {};
 &nbsp;
-  public async create(payload: IComment): Promise&lt;IComment&gt; {
-    const validation = commentZodSchema.safeParse(payload);
+  public async create(payload: IAnime): Promise&lt;IAnime&gt; {
+    const validation = animesZodSchema.safeParse(payload);
     if (!validation.success) {
       const err = new Error(validation.error.message);
       err.name = ErrorMessages.PAYLOAD_INCORRECT;
@@ -233,16 +241,20 @@ class CommentsServices implements IServices&lt;IComment&gt; {
       throw err;
     }
 &nbsp;
+    const verifyExistence = await this._model.read({ anime_id: payload.anime_id });
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (verifyExistence.length &gt; 0) <span class="cstat-no" title="statement not covered" >return null as unknown as IAnime;</span>
+&nbsp;
     const request = await this._model.create(payload);
+    
     return request;
   };
 &nbsp;
-  public async findAll(): Promise&lt;IComment[]&gt; {
+  public async findAll(): Promise&lt;IAnime[]&gt; {
     const request = await this._model.read({});
     return request;
   };
 &nbsp;
-  public async findOne(_id: string): Promise&lt;IComment | null&gt; {
+  public async findOne(_id: string): Promise&lt;IAnime | null&gt; {
     const request = await this._model.readOne(_id);
 &nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!request) {
@@ -255,8 +267,8 @@ class CommentsServices implements IServices&lt;IComment&gt; {
     return request;
   };
 &nbsp;
-  public async update(_id: string, payload: IComment): Promise&lt;IComment | null&gt; {
-    const validation = commentZodSchema.safeParse(payload);
+  public async update(_id: string, payload: IAnime): Promise&lt;IAnime | null&gt; {
+    const validation = animesZodSchema.safeParse(payload);
     if (!validation.success) {
       const err = new Error(validation.error.message);
       err.name = ErrorMessages.PAYLOAD_INCORRECT;
@@ -276,7 +288,7 @@ class CommentsServices implements IServices&lt;IComment&gt; {
     return request;
   };
 &nbsp;
-  public async delete(_id: string): Promise&lt;IComment | null&gt; {
+  public async delete(_id: string): Promise&lt;IAnime | null&gt; {
     const request = await this._model.delete(_id);
 &nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!request) {
@@ -290,7 +302,7 @@ class CommentsServices implements IServices&lt;IComment&gt; {
   };
 }
 &nbsp;
-export default CommentsServices;
+export default AnimesServices;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

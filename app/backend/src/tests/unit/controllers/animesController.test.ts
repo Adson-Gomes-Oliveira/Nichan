@@ -12,7 +12,7 @@ import HttpStatus from '../../../helpers/HttpStatus';
 
 const { expect } = chai;
 
-describe('[ 06 ] Unit tests for: User Animes Controller', () => {
+describe('[ 06 ] Unit tests for: Animes Controller', () => {
   const newUserAnimesModel = new UserAnimesModel();
   const newUserAnimesServices = new UserAnimesServices(newUserAnimesModel);
   const newUserAnimesController = new UserAnimesController(newUserAnimesServices);

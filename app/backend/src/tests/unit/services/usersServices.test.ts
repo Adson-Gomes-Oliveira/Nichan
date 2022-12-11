@@ -20,7 +20,10 @@ describe('[ 03 ] Unit tests for: Users Services', () => {
 
   before(() => {
     sinon.stub(newMongoModel, 'create').resolves(USER_INSTANCE_MOCK_WITH_ID);
-    sinon.stub(newMongoModel, 'read').resolves([USER_INSTANCE_MOCK_WITH_ID]);
+    sinon.stub(newMongoModel, 'read')
+      .onFirstCall().resolves([])
+      .onSecondCall().resolves([USER_INSTANCE_MOCK_WITH_ID]);
+
     sinon.stub(newMongoModel, 'readOne').resolves(USER_INSTANCE_MOCK_WITH_ID);
     sinon.stub(newMongoModel, 'update').resolves(USER_INSTANCE_MOCK_WITH_ID);
     sinon.stub(newMongoModel, 'delete').resolves(USER_INSTANCE_MOCK_WITH_ID);

@@ -7,7 +7,6 @@ const animesMongooseSchema = new Schema<IAnime>({
   title: String,
   image: String,
   genres: Array,
-  status: String,
   description: String,
   episodes: Array,
   releaseDate: String,
