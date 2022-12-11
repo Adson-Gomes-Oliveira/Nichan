@@ -16,10 +16,8 @@ class AnimesServices implements IServices<IAnime> {
       throw err;
     }
 
-    const verifyExistence = await this._model.read({ anime_external_id: payload.anime_external_id });
-    if (verifyExistence) {
-      return null as unknown as IAnime;
-    }
+    const verifyExistence = await this._model.read({ anime_id: payload.anime_id });
+    if (verifyExistence) return null as unknown as IAnime;
 
     const request = await this._model.create(payload);
     return request;

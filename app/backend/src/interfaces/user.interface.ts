@@ -1,8 +1,7 @@
 import { z } from 'zod';
 
 const userAnimesZodSchema = z.object({
-  external_id: z.string(),
-  internal_id: z.string(),
+  anime_id: z.string(),
   status: z.enum(['watching', 'finished', 'dropped']),
 })
 

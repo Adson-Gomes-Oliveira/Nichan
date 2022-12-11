@@ -3,9 +3,9 @@ import { IAnime } from '../interfaces/anime.interface';
 import MongoModel from './mongo.model';
 
 const animesMongooseSchema = new Schema<IAnime>({
-  anime_external_id: String,
+  anime_id: String,
   title: String,
-  cover: String,
+  image: String,
   genres: Array,
   status: String,
   description: String,
@@ -13,7 +13,7 @@ const animesMongooseSchema = new Schema<IAnime>({
   releaseDate: String,
   rating: Number,
   comments: Array,
-}, { versionKey: false });
+}, { versionKey: false, _id: false });
 
 class AnimesModel extends MongoModel<IAnime> {
   constructor(public model = mongooseCreateModel('Animes', animesMongooseSchema)) {
