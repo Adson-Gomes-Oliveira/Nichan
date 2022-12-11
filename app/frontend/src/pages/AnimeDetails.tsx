@@ -28,7 +28,7 @@ function AnimeDetails(): JSX.Element {
         <div className="details-anime">
           <span>{animeDetails.title}</span>
           <div className="description-details">
-            <img src={animeDetails.cover} alt={`Anime - ${animeDetails.title}`} />
+            <img src="https://i.animepahe.ru/posters/e3a01c608e389a61a1111d6b0e609dce.jpg" alt={`Anime - ${animeDetails.title}`} />
             <div className="text-description">
               <h3>Sobre o anime</h3>
               <p>{animeDetails.description}</p>

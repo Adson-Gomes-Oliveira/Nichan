@@ -34,12 +34,12 @@ function Header(): JSX.Element {
             </li>
           </Link>
           <Link to="/favorites">
-            <li className={focus === '/favorites' ? "text-golden" : "text-white"}>
+            <li className={focus.includes('favorites') ? "text-golden" : "text-white"}>
               Favoritos
             </li>
           </Link>
           <Link to="/users">
-            <li className={focus === '/users' ? "text-golden" : "text-white"}>
+            <li className={focus.includes('users') ? "text-golden" : "text-white"}>
               Usuários
             </li>
           </Link>
