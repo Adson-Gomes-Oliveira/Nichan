@@ -17,9 +17,9 @@ interface IAnimeExternal {
 }
 
 interface IAnime {
-  anime_external_id: string;
+  anime_id: string;
   title: string;
-  cover: string;
+  image: string;
   genres: string[];
   status: string;
   description: string;

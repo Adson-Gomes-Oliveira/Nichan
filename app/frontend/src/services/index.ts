@@ -1,16 +1,25 @@
 import axios from 'axios';
 
-const api = axios.create({
+const apiLocalServer = axios.create({
   baseURL: 'http://localhost:3001',
 });
 
-const animesExternalAPI = axios.create({
+const animesAPI_Consumet = axios.create({
   baseURL: 'https://api.consumet.org/anime/animepahe',
 });
 
+const animesAPI_AnimeTV = axios.create({
+  baseURL: 'https://appanimeplus.tk/',
+});
+
+
 async function setToken(token: string): Promise<void> {
-  api.defaults.headers.common.Authorization = token;
+  apiLocalServer.defaults.headers.common.Authorization = token;
 }
 
-export { api, animesExternalAPI };
-export default setToken;
+export { 
+  setToken,
+  animesAPI_Consumet,
+  animesAPI_AnimeTV,
+};
+export default apiLocalServer;
