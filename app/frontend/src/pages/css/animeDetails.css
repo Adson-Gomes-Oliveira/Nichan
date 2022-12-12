@@ -8,5 +8,62 @@
     background-size: cover;
     background-blend-mode: darken;
     background-position: center;
+    @apply flex flex-col items-center;
+  }
+
+  .details-anime {
+    @apply px-4 text-white;
+  }
+
+  .details-anime h2 {
+    @apply my-2 text-xl font-bebasNeue;
+  }
+
+  .details-anime .description-details {
+    @apply flex;
+  }
+
+  .details-anime .description-details img {
+    @apply w-[40%] max-h-52;
+  }
+
+  .details-anime .description-details .text-description {
+    @apply ml-2 flex flex-col;
+  }
+
+  .details-anime .description-details .text-description h3 {
+    @apply text-sm font-poppins font-bold;
+  }
+
+  .details-anime .description-details .text-description p {
+    @apply mt-2 text-xs;
+  }
+
+  .details-anime .infos {
+    @apply mt-3 text-sm flex flex-col;
+  }
+
+  .details-anime .infos span {
+    @apply mb-1;
+  }
+
+  .favorite-button {
+    @apply mt-10 text-white font-poppins font-bold;
+  }
+
+  .comments-anime {
+    @apply w-full px-4 mt-10 flex flex-col; 
+  }
+
+  .comments-anime h2 {
+    @apply text-white font-bebasNeue text-2xl;
+  }
+
+  .comments-anime .howto-comment {
+    @apply text-white text-xs;
+  }
+
+  .comments-anime .no-comments {
+    @apply my-16 text-white text-center;
   }
 }

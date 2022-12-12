@@ -26,7 +26,7 @@ function AnimeDetails(): JSX.Element {
       <Header />
       {animeDetails && (
         <div className="details-anime">
-          <span>{animeDetails.title}</span>
+          <h2>{animeDetails.title}</h2>
           <div className="description-details">
             <img src={animeDetails.image} alt={`Anime - ${animeDetails.title}`} />
             <div className="text-description">
@@ -35,20 +35,28 @@ function AnimeDetails(): JSX.Element {
             </div>
           </div>
           <div className="infos">
-            <span>Nota geral: {animeDetails.rating}</span>
-            <span>Genêros: {animeDetails.genres}</span>
-            <span>Ano de Lançamento: {animeDetails.releaseDate}</span>
+            <span><b>Nota dos usuários:</b> {animeDetails.rating}</span>
+            <span><b>Genêros:</b> {animeDetails.genres}</span>
+            <span><b>Ano de Lançamento:</b> {animeDetails.releaseDate}</span>
           </div>
         </div>
       )}
       <button
         type="button"
+        className="favorite-button"
       >
         <span>Adicionar a lista de Favoritos +</span>
       </button>
       <div className="comments-anime">
         <h2>Comentários</h2>
-        <div className="coment-card"></div>
+        <span className="howto-comment">{`
+          Para comentar você precisa estar logado, favoritar o anime e na página de favoritos selecionar 
+          este anime e fazer seu comentário clicando em avaliar.
+        `}</span>
+        <span className="no-comments">Ainda não tem comentários nesse anime, deixe sua contribuição :D</span>
+        <div className="coment-card">
+          
+        </div>
       </div>
       <Footer />
     </section>
