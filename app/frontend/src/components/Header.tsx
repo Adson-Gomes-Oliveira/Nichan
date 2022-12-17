@@ -1,16 +1,28 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CuteCatSVG from '../assets/svgs/cute-cats.svg';
 import { Link } from 'react-router-dom';
 import './css/header.css';
 
 function Header(): JSX.Element {
+  const navigate = useNavigate();
   const location = useLocation();
   const [focus, setFocus] = useState<string>('');
+  const [userIsLogged, setUserIsLoggeed] = useState<boolean>(false);
 
   useEffect(() => {
     setFocus(location.pathname);
+
+    const userLogged = localStorage.getItem('user');
+    if (userLogged) setUserIsLoggeed(true);
+    if (!userLogged) setUserIsLoggeed(false);
   }, [location.pathname]);
+
+  const handleLoggout = (): void => {
+    localStorage.clear();
+    if (location.pathname === '/') navigate(0);
+    if (location.pathname !== '/') navigate('/');
+  }
 
   return(
     <header className="general-header">
@@ -43,7 +55,16 @@ function Header(): JSX.Element {
               Usuários
             </li>
           </Link>
-          <Link to="/login"><li>Login</li></Link>
+          {userIsLogged ? (
+            <button
+              className="loggout-button"
+              onClick={handleLoggout}
+            >
+              <li>Sair</li>
+            </button>
+          ) : (
+            <Link to="/login"><li>Login</li></Link>
+          )}
         </ul>
       </nav>
     </header>
