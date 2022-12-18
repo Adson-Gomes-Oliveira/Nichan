@@ -37,11 +37,11 @@ class LoginServices {
       throw err;
     }
 
-    const { password, ...noPasswordUser } = userToLogin[0];
-    
+    const { password: _, ...noPasswordUser } = userToLogin[0];
+
     const token = JSONWebToken.createToken(noPasswordUser as IUser);
     return {
-      data: noPasswordUser,
+      ...noPasswordUser,
       token,
     };
   }

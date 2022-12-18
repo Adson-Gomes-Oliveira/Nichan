@@ -11,7 +11,7 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async read(query: QueryOptions): Promise<T[]> {
-    return this._model.find(query);
+    return this._model.find(query).lean();
   }
 
   public async readOne(_id: string): Promise<T | null> {
