@@ -21,6 +21,10 @@ function AnimeDetails(): JSX.Element {
     getAnimeDetails();
   }, [getAnimeDetails]);
 
+  const handleFavorite = async () => {
+    
+  }
+
   return (
     <section className="anime-details-section">
       <Header />
@@ -44,6 +48,7 @@ function AnimeDetails(): JSX.Element {
       <button
         type="button"
         className="favorite-button"
+        onClick={handleFavorite}
       >
         <span>Adicionar a lista de Favoritos +</span>
       </button>
