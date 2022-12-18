@@ -1,15 +1,19 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import ShapeLoginSVG from '../assets/svgs/shape-curve-login-screen.svg';
 import CuteCatSVG from '../assets/svgs/cute-cats.svg';
 import AnimeGirl from '../assets/images/Anime-Girl-PNG-Pic.png';
+import loginUser from '../services/userRequests';
 import { ErrorLoginMessages } from '../helpers/errorMessages';
-import loginUser from "../services/userRequests";
+import { useAppDispatch } from '../redux/hooks';
+import { setUser } from '../redux/slicers/user.slice';
+import IUser from '../interfaces/user.interface';
 
 import './css/login.css';
 
 function Login(): JSX.Element {
+  const dispatch = useAppDispatch();
   const [loginInput, setLoginInput] = useState({
     email: '',
     password: '',
@@ -63,7 +67,15 @@ function Login(): JSX.Element {
     }
     
     const requestLogin = await loginUser(loginInput.email, loginInput.password);
-    localStorage.setItem('user', JSON.stringify(requestLogin));
+    const { token: _, ...userWithNoToken } = requestLogin;
+    dispatch(setUser(userWithNoToken as IUser));
+
+    localStorage.setItem('user', JSON.stringify({
+      _id: requestLogin._id,
+      fullName: requestLogin.fullName,
+      email: requestLogin.email,
+      token: requestLogin.token,
+    }));
     navigate('/');
   }
 

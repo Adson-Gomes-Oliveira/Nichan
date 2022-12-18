@@ -6,7 +6,6 @@ interface IUser {
   picture: string,
   aboutMe: string,
   email: string,
-  password: string,
   gender: string,
   showFavorites: boolean,
   socialMedia: {
@@ -16,7 +15,8 @@ interface IUser {
   },
   anime_list: object,
   achievements: string[],
-  memberSince: Date,
+  memberSince: string,
+  token: string,
 }
 
 export default IUser;
