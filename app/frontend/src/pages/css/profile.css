@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .profile-section {
+    background: url('../../assets/images/background-anime.png'), rgba(8, 0, 15, 0.932);
+    background-size: cover;
+    background-blend-mode: darken;
+    background-position: center;
+    @apply text-white;
+  }
+
+  .user-info-profile {
+    @apply flex flex-col;
+  }
+
+  .user-info-profile .general-user-info {
+    @apply my-5 flex flex-col items-center;
+  }
+
+  .user-info-profile .general-user-info span:first-of-type {
+    @apply text-7xl;
+  }
+
+  .user-info-profile .general-user-info .username {
+    @apply font-poppins;
+  }
+
+  .user-info-profile .general-user-info .tag {
+    @apply font-poppins text-xs;
+  }
+
+  .user-info-profile .general-user-info .social-media {
+    @apply mt-3 flex justify-center;
+  }
+
+  .user-info-profile .general-user-info .social-media a {
+    @apply h-fit w-fit;
+  }
+
+  .user-info-profile .general-user-info .social-media img {
+    @apply w-8 mx-2;
+  }
+
+  .user-info-profile .data-user-info {
+    @apply flex flex-col;
+  }
+}

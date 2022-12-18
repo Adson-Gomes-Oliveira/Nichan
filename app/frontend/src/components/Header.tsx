@@ -31,7 +31,9 @@ function Header(): JSX.Element {
           <h1>Nichan</h1>
           <img src={CuteCatSVG} alt="" />
         </div>
-        <span className="material-icons-outlined">account_circle</span>
+        <Link to="/profile">
+          <span className="material-icons-outlined">account_circle</span>
+        </Link>
       </div>
       <nav className="menu-header">
         <ul>
