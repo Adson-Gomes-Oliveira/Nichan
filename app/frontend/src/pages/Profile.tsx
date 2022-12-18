@@ -55,7 +55,7 @@ function Profile(): JSX.Element {
         <div className="data-user-info">
           <span>Minutos Assistidos: </span>
           <span>Animes Completos: </span>
-          <span>Membro desde: </span>
+          <span>{`Membro desde: ${userInfos?.memberSince}`}</span>
         </div>
       </div>
       <div className="aboutme-profile">

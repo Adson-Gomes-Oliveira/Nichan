@@ -12,7 +12,7 @@
   }
 
   .user-info-profile {
-    @apply flex flex-col;
+    @apply flex flex-col px-4;
   }
 
   .user-info-profile .general-user-info {
@@ -45,5 +45,33 @@
 
   .user-info-profile .data-user-info {
     @apply flex flex-col;
+  }
+
+  .user-info-profile .data-user-info span {
+    @apply text-sm;
+  }
+
+  .aboutme-profile {
+    @apply mt-5 flex flex-col px-4;
+  }
+
+  .aboutme-profile h2 {
+    @apply text-2xl font-bebasNeue;
+  }
+
+  .achievements-profile {
+    @apply mt-5 flex flex-col px-4;
+  }
+
+  .achievements-profile h2 {
+    @apply text-2xl font-bebasNeue;
+  }
+
+  .favorite-animes-profile {
+    @apply mt-5 flex flex-col px-4;
+  }
+
+  .favorite-animes-profile h2 {
+    @apply text-2xl font-bebasNeue;
   }
 }
