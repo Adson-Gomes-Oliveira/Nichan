@@ -63,7 +63,7 @@ git clone git@github.com:Adson-Gomes-Oliveira/Nichan.git
 
 
 ### Informações adicionais
-Desenvolvido com React 18, Node 16 e muita dedicação.
+Desenvolvido com React 18, Node 16 e muita dedicação.  
 APLICAÇÂO EM DESENVOLVIMENTO ( 40 % )  
 
 Apenas Versão Mobile !!
